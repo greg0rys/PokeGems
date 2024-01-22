@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pokemon trainers</h1>
+
+<div id="pokemon_trainers">
+  <% @pokemon_trainers.each do |pokemon_trainer| %>
+    <%= render pokemon_trainer %>
+    <p>
+      <%= link_to "Show this pokemon trainer", pokemon_trainer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pokemon trainer", new_pokemon_trainer_path %>

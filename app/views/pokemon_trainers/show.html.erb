@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pokemon_trainer %>
+
+<div>
+  <%= link_to "Edit this pokemon trainer", edit_pokemon_trainer_path(@pokemon_trainer) %> |
+  <%= link_to "Back to pokemon trainers", pokemon_trainers_path %>
+
+  <%= button_to "Destroy this pokemon trainer", @pokemon_trainer, method: :delete %>
+</div>

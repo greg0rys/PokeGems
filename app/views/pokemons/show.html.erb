@@ -1,0 +1,101 @@
+
+<!-- this will display all the pokemons data at once if you uncomment it
+<%= render @pokemon %>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex Entry</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e60012; /* Pokemon Ball Red */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .pokedex-entry {
+            /*background: url('pokeball_background.jpg') center/cover no-repeat;*/ /* Replace with your Pokeball background */
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ffc72c; /* Pikachu Yellow Box Shadow */
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            color: pink; /* White text for contrast */
+        }
+
+        .pokemon-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+                color: #ffc72c; /* Pikachu Yellow */
+        }
+
+        .pokemon-type {
+            font-size: 18px;
+            margin-bottom: 10px;
+                color: #78c850; /* Bulbasaur Green */
+        }
+
+        .pokemon-description {
+            font-size: 16px;
+            line-height: 1.5;
+                color: #f08030; /* Charmander Orange */
+        }
+        
+                .pokemon-links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pokemon-link {
+            text-decoration: none;
+            color: #ffc72c; /* Yellow color for links */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .pokemon-link:hover {
+            color: #fff; /* White color on hover */
+        }
+        
+                .pokemon-button:hover {
+            background-color: #ff4d4d; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="pokedex-entry">
+    <div class="pokemon-name"><%= @pokemon.name %></div>
+    <div class="pokemon-type"><%= @pokemon.poke_type %></div>
+    <div class="pokemon-description">
+        Pikachu is an Electric-type Pokemon known for its yellow fur with brown stripes on its back and its ability to generate electricity. It evolves from Pichu when leveled up with high friendship and evolves into Raichu when exposed to a Thunder Stone.
+    </div>
+    
+        <div class="pokemon-links">
+        
+        <%= link_to 'Back To Pokemon', pokemons_path, class: 'pokemon-link' %>
+        <%= link_to "Add New pokemon", new_pokemon_path, class: 'pokemon-link' %>
+        <%= button_to "Destroy this pokemon", @pokemon, method: :delete, class: 'pokemon-button' %>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+<p style="color: green"><%= notice %></p>
+
+
+
+

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            background: #e60012; /* Pokeball red */
+            color: #fff; /*text contrast for red */
+        }
+
+        .sidebar {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            border-color: #b4000d;
+            border-width: 2px;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            height: 100vh; /* Adjust as needed */
+            opacity: 0; /* Set initial opacity to 0 */
+        }
+
+        .grid-container a {
+          color: #ffeb3b;
+          text-decoration: none;
+        }
+
+        .grid-item {
+            border: 1px solid #b4000d;
+            padding: 20px;
+            text-align: center;
+            animation: dropDown 1s ease-out forwards; /* Animation */
+        }
+        .pokeball-text {
+            font-size: 3vw;
+            font-weight: bold;
+            background: linear-gradient(to right, #f5f5f5 50%, #d30000 50%);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        /* the animationo used for the grid on page load */
+        @keyframes dropDown {
+            from {
+                transform: translateY(-50px); /* Start position above */
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0); /* End position at original position */
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="navbar">
+      <div class="pokeball-text">Poke Admin</div>
+
+<%= link_to "New pokemon", new_pokemon_path %>
+<a href="#"> <%= "Total Pokemon: #{Pokemon.count}" %> </a>
+        <a href="#">Link 3</a>
+    </div>
+</div>
+
+
+<div class="grid-container">
+  <!--  <div class="grid-item"> -->
+
+
+    <% @pokemons.each do |pokemon| %>
+      <div class="grid-item">
+    <%= render pokemon %>
+    <p>
+      <%= link_to "Show this pokemon", pokemon %>
+    </p>
+      </div>
+  <% end %>
+  </div>
+
+  <!--    <div class="grid-item">Column 2, Row 1</div> -->
+  <!--    <div class="grid-item">Column 3, Row 1</div> -->
+  <!--    <div class="grid-item">Column 1, Row 2</div> -->
+  <!--    <div class="grid-item">Column 2, Row 2</div> -->
+  <!--    <div class="grid-item">Column 3, Row 2</div> -->
+  <!--</div> -->
+
+  <footer>
+    <script>
+        // Get the page name from the document title
+        const pageTitle = document.title;
+        
+        // Update the footer content
+        document.querySelector('footer').innerHTML = `
+            &copy; ${new Date().getFullYear()} ${pageTitle}
+         | info@greg0rys.codes`;
+    </script>
+
+<p style="color: green;font-family:monospace"><%= notice %></p>
+  </footer>
+
+<script>
+  setTimeout(function () {
+    document.querySelector('.grid-container').style.opacity = 1;
+    },500);
+  </script
+
+
+</body>
+</html>

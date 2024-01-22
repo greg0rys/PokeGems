@@ -1,0 +1,2 @@
+class PokemonTrainer < ApplicationRecord
+end
